@@ -19,9 +19,10 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FiBriefcase, FiMapPin, FiSearch, FiTrendingUp, FiUsers } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import { useJobs } from '../hooks/useJobs';
-
 export const Home = () => {
+  const navigate = useNavigate();
   const [searchTitle, setSearchTitle] = useState('');
   const [searchLocation, setSearchLocation] = useState('');
   const [searchParams, setSearchParams] = useState({ title: '', location: '' });
@@ -120,8 +121,10 @@ export const Home = () => {
                   _hover={{ 
                     transform: 'translateY(-4px)', 
                     transition: 'all 0.2s',
-                    boxShadow: 'lg'
+                    boxShadow: 'lg',
+                    cursor: 'pointer'
                   }}
+                  onClick={() => navigate(`/jobs/${job.id}`)}
                 >
                   <CardBody>
                     <VStack align="stretch" spacing={4}>

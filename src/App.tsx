@@ -8,6 +8,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { Applications } from './pages/Applications';
 import { CreateJob } from './pages/CreateJob';
 import { Home } from './pages/Home';
+import { JobDetails } from './pages/JobDetails';
 import { Login } from './pages/Login';
 import { MyApplications } from './pages/MyApplications';
 import { MyJobs } from './pages/MyJobs';
@@ -68,6 +69,27 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
+                <Route
+                  path="/my-jobs"
+                  element={
+                    <ProtectedRoute roleRequired="employer">
+                      <MyJobs />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route path="/jobs/:id" element={<JobDetails />} />
+
+                <Route
+                  path="/applications"
+                  element={
+                    <ProtectedRoute roleRequired="employer">
+                      <Applications />
+                    </ProtectedRoute>
+                  }
+                />
+
+
               </Routes>
             </Box>
             <Footer />
